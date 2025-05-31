@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        .pro{
+           display:flex;
+           justify-content: space-between;
+           align-items: end;
+           border-bottom: 1px solid black;
+        }
+        .product{
+            border:2px solid black;
+            width:500px;
+            height:505px;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;  
+        }
+        .product img{
+            margin: 20px;
+            height:300px;
+            width:350px;
+            aspect-ratio: 3/2;
+            object-fit: contain;
+        }
+        .product button{
+            background-color: rgb(31, 218, 43);
+            height:30px;
+            width:250px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 20px;
+        }
+        .product button:hover{
+            background-color: rgb(21, 255, 0);  
+        }
+        .product p,h3{
+            border:1px solid rgb(141, 141, 141);
+            
+        }
+        #products{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:50px;
+            place-items: center;
+            margin-top: 50px;
+        }
+        .arrow{
+            width: 25px;
+            height: 25px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="pro">
+   <a href="mb.html" ><img src="arrow-left.png.svg" alt="" class="arrow"></a>
+   <h1>Products</h1>
+</div>
+
+<div id="products">
+    <div class="product">
+        <h3>Handpump</h3>
+        <img src="handpump.jfif" alt="handpump">
+        <p>Rs 1000.00</p>
+        <p>Agroprime Manual Agriculture Sprayer Pump 16ltrs Tank with Back Support - Sprayer Machine for Agriculture,</p>
+        <button  onclick="addToCart('Handpump', 1000.00)">Add to Cart></button>
+    </div>
+    <div class="product">
+        <h3>Battery Pump</h3>
+        <img src="battery.jpg" alt="handpump">
+        <p>Rs 2200.00</p>
+        <p>agrO Mill Turbo 2-In-1 Agriculture Sprayer Pump | Manual And Automatic Spray Machine For Agriculture,</p>
+        <button  onclick="addToCart('Battery Pump', 2200.00)">Add to Cart></button>
+    </div>
+    <div class="product">
+        <h3>Double Battery Pump</h3>
+        <img src="doublebattery.webp" alt="handpump">
+        <p>Rs 3200.00</p>
+        <p> Double Motor Battery Sprayer (20 Lt) | 12V X 12Ah Battery | Free Spray Gun & LED Bulb | 4 Nozzles | High-</p>
+        <button  onclick="addToCart('Double Battery Pump', 3500.00)">Add to Cart></button>
+    </div>
+    
+    <div class="product">
+        <h3>Petrol Pump</h3>
+        <img src="petrol.webp" alt="handpump">
+        <p>Rs 8000.00</p>
+        <p>NEPTUNE FARMING Knapsack Power Sprayer with 2 Stroke Advanced Technology 26 Cc Petrol Engine, 20 L</p>
+        <button  onclick="addToCart('Petrol Pump', 8500.00)">Add to Cart></button>
+    </div>       
+    <div class="product">
+        <h3>Portable Battery Pump</h3>
+        <img src="portable-agriculture-sprayer-pump-1653036221-6348700.jpeg" alt="handpump">
+        <p>Rs 3500.00</p>
+        <p>Agroprime Manual Agriculture Sprayer Pump 16ltrs Tank with Back Support - Sprayer Machine for Agriculture,</p>
+        <button  onclick="addToCart('Portable Battery Pump', 3500.00)">Add to Cart></button>
+    </div>
+    <div class="product">
+        <h3>HTP Sprayer Pump</h3>
+        <img src="AG215_HTP_SPRAYER_3.webp" alt="handpump">
+        <p>Rs 4500.00</p>
+        <p>agrO Mill Turbo 2-In-1 Agriculture Sprayer Pump | Manual And Automatic Spray Machine For Agriculture,</p>
+        <button  onclick="addToCart('HTP Sprayer Pump', 4500.00)">Add to Cart></button>
+    </div>
+    <div class="product">
+        <h3>Mini Sprayer Pump</h3>
+        <img src="images.jfif" alt="handpump">
+        <p>Rs 320.00</p>
+        <p> Double Motor Battery Sprayer (20 Lt) | 12V X 12Ah Battery | Free Spray Gun & LED Bulb | 4 Nozzles | High-</p>
+        <button  onclick="addToCart('Mini Sprayer Pump', 320.00)">Add to Cart></button>
+    </div>
+    
+    <div class="product">
+        <h3>Petrol Sprayer Pump</h3>
+        <img src="AG153_HTP_Sprayer.webp" alt="handpump">
+        <p>Rs 8000.00</p>
+        <p>NEPTUNE FARMING Knapsack Power Sprayer with 2 Stroke Advanced Technology 26 Cc Petrol Engine, 20 L</p>
+        <button  onclick="addToCart('Petrol Sprayer Pump', 1000.00)">Add to Cart></button>
+    </div>   
+    
+</div>
+<script src="mb.js">
+      
+</script>
+</body>
+</html>

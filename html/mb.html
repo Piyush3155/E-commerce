@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MB AGRITECH</title>
+    <script src="https://kit.fontawesome.com/a097b6fa78.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --color-primary: #4CAF50;
+            --color-primary-dark: #45a049;
+            --color-background: #f0f8f0;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-white: #fff;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: linear-gradient(to bottom right, #e8f5e9, #c8e6c9);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        h1 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .cart-button {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cart-count {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.6rem;
+            margin-left: 0.5rem;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: -20%;
+            left: 0;
+            right: 0;
+            background-color: var(--color-white);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            z-index: 999;
+            transition: top 0.3s ease-in-out;
+        }
+
+        .mobile-menu.display {
+           top:60px;
+        }
+        .mobile-menu a {
+            color: var(--color-text);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+        }
+
+        main {
+            padding-top: 80px;
+            padding-bottom: 2rem;
+        }
+
+        .hero {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            padding: 1.5rem;
+        }
+
+        .hero h2 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .product-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        #products h3{
+            text-shadow: 2px 2px 2px #f6f9f7;
+            color:rgb(5, 5, 5);
+            font-size: 1.5rem;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .add-to-cart {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        #about {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        #success-cart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 5px solid #4CAF50;
+            padding: 20px;
+            text-align: center;
+            z-index: 1001;
+            overflow: hidden;
+            width: 400px;
+            height: 130px;
+        }
+        .done img{
+            width:100px;
+            height: 100px;   
+        }
+        .done{
+            position: relative;
+            top:50%;
+            left:45%;
+            transform: translate(-50%,-50%);
+            animation: go 1.2s linear;
+        }
+
+        @keyframes go {
+            from{
+                left:-20%;
+            }
+            to{
+                left: 150%;
+            }  
+        }
+      
+        #cart-modal {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            height: 100%;
+            width: 500px;
+            max-width: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        #cart-modal.open {
+            right: 0;
+        }
+
+        .cart-modal-content {
+            padding: 2rem;
+        }
+
+        .cart-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            margin-bottom: 1rem;
+        }
+
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        #buy {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #buy:hover {
+            background-color: #45a049;
+        }
+
+        .recent-orders {
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .recent-order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .bill-total {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        }
+        .bill-items li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+        }
+        .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+        background-color: var(--color-primary);
+        color: white;
+        }
+
+        .btn-primary:hover {
+        background-color: var(--color-primary-dark);
+        }
+
+        .btn-secondary {
+        background-color: #e81010;
+        color: white;
+        }
+
+        .btn-secondary:hover {
+        background-color: #eb3b3b;
+        }
+
+        @media (max-width: 768px) {
+        .cart-modal-content {
+            margin: 5% auto;
+            padding: 1rem;
+        }
+        }
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr ));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .categories-items {
+            position: relative;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .categories-items:hover {
+            transform: translateY(-5px);
+        }
+
+        .categories-items img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .categories-items h1 {
+            position: absolute;
+            bottom: -165%;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 500px;
+            color: var(--color-white);
+            padding: 0.5rem;
+            margin: 0;
+            font-size: 1rem;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+                align-items: center;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .hero img {
+                height: 400px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    .bill-container {
+        position: fixed;
+        top: 0;
+        right: -500px;
+        height: 100%;
+        width: 500px;
+        max-width: 100%;
+        background-color: #fff;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        padding: 50px;
+        overflow-y: auto;
+    }
+
+    .bill-container.open {
+        right: 0; 
+    }
+
+    .cart-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #333;
+    }
+        
+        .billing-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .billing-form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .billing-form input,
+        .billing-form select {
+            margin-bottom: 15px;
+            padding: 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .billing-form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .billing-form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .cart-summary {
+            margin-bottom: 20px;
+        }
+        .cart-summary h3 {
+            margin-bottom: 10px;
+        }
+        .cart-summary p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .cart-summary p span {
+            font-weight: bold;
+        }
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .success-message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .success-message h2 {
+            color: #0000FF;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ᗰᗷ ΔGRITECH</h1>
+            <nav class="desktop-nav">
+                <a href="#" id="myorders">My Orders</a>
+                <a href="#products">Products</a>
+                <a href="#home">Home</a>
+                <a href="#cart" class="cart-button" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping fa-xl"></i><span class="cart-count">0</span></a>
+                <a href="#" onclick="logout()">Sign-Out</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars fa-2xl" ></i></button>
+        </div>
+    </header>
+
+    <nav class="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#home">Home</a>
+        <a href="#cart" class="cart-button" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping fa-xl"></i><span class="cart-count">0</span></a>
+        <a href="#" onclick="logout()">Log-Out</a>
+    </nav>
+
+    <main class="container">
+        <section id="home">
+            <div class="hero">
+                <img src="/photo/_farmer_with_battery_sprayer_pump_27en94o5hxjzm8sz8nj5_2.png" alt="Farmer with sprayer">
+                <div class="hero-content">
+                    <h2>Welcome to MB AGRITECH</h2>
+                    <p>
+                        Our agriculture sprayer pumps are designed to deliver precise, efficient, and reliable spraying solutions. 
+                        Engineered for modern farming, they enhance crop health and maximize yields, making them essential tools for sustainable agriculture. 
+                        With cutting-edge technology and durable construction, our sprayers ensure optimal performance for every farming need.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="categories">
+            <h2>Categories</h2>
+            <div class="categories-container">
+                <div class="categories-items">
+                    <a href="#battery"><img src="/photo/battery.jpg" alt="" >
+                    <h1>BATTERY AND MANUAL PUMPS</h1>
+                </a>
+                </div>
+
+                <div class="categories-items">
+                    <a href="#petrol"><img src="/photo/petrol.webp" alt="" >
+                        <h1>PETROL PUMPS</h1>
+                    </a>
+                </div>
+
+                <div class="categories-items">
+                    <a href="#htp"><img src="/photo/AG153_HTP_Sprayer.webp" alt="" >
+                        <h1>HTP-SPRAYER PUMPS</h1>
+                    </a>
+                </div>
+
+                <div class="categories-items">
+                    <a href="#grass"><img src="/photo/grass_cutter.webp" alt="" >
+                        <h1>GRASS CUTTER</h1>
+                    </a>
+                </div>
+
+                <div class="categories-items">
+                    <a href="#washer"><img src="/photo/pressure_washer.jpg" alt="" >
+                        <h1>PRESSURE WASHER</h1>
+                    </a>
+                </div>
+
+                <div class="categories-items">
+                    <a href="#spare"><img src="/photo/spares.jpg" alt="" >
+                        <h1>SPARES PARTS</h1>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="products">
+            <h2>Our Products</h2>
+            
+            <h3 id="battery">BATTERY AND MANUAL PUMPS</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/handpump.jfif" alt="Handpump">
+                    <div class="product-info">
+                        <h3>Handpump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 1199.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Handpump', 1000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/battery.jpg" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>Battery Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 2199.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Battery Pump', 2199.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/doublebattery.webp" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>Double Battery Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 2999.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Double Battery Pump', 2999.00)">Add to Cart</button>
+                    </div>
+                </div>
+                
+              <div class="product-card"> 
+                    <img src="/photo/handpump1.jfif" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Knapsack Manual Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 999.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Knapsack Manual Pump',999.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/2litre.jpg" alt="2litre Pump">
+                    <div class="product-info">
+                        <h3>2 Litre Manual Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 249.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('2 Litre Manual Pump', 249.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/8litre.avif" alt="8litre Pump">
+                    <div class="product-info">
+                        <h3>8 Litre Manual Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 799.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('8 Litre Manual Pump', 799.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/balwan.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Balwan Battery Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 3199.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Balwan Battery Pump', 3199.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/hitech.jpg" alt="Pump">
+                    <div class="product-info">
+                        <h3>Hi-Tech Manual Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 1199.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Hi-Tech Manual Pump', 1199.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br><br>
+        <section id="products">
+            <h3 id="petrol">Petrol Pumps</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/petrol.webp" alt="petrol">
+                    <div class="product-info">
+                        <h3>2 Stroke Petrol Sparyer Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 7999.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('2 Stroke Petrol Sparyer Pump', 7999.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/petrol1.webp" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>4 Stroke Petrol Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 10000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                          <button class="add-to-cart" onclick="addToCart('4 Stroke Petrol Pump', 10000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/petrol2.jpg" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>Honda GX-35 4 Stroke Petrol Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 14000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('GX-35 4 Stroke Petrol Pump', 14000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/petrol3.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>GX-35 4 Stroke Petrol Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 9000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('GX-35 4 Stroke Petrol Pump', 9000.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/portable.jpg" alt="2litre Pump">
+                    <div class="product-info">
+                        <h3>4 Stroke Portable Petrol Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 10000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('4 Stroke Portable Petrol Pump', 10000.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/portable1.jpg" alt="8litre Pump">
+                    <div class="product-info">
+                        <h3>2 Stroke Portable Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 9500.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('2 Stroke Portable Petrol Pump', 9500.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/portable2.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Balwan 2 Stroke Portable Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 9200.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Balwan 2 Stroke Portable Pump', 9200.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/portable4.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Neptune 2 Stroke Portable Pump</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 8500.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Neptune 2 Stroke Portable Pump', 8500.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <section id="products">
+            <h3 id="htp">HTP-Sprayer Pumps</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/at22.webp" alt="petrol">
+                    <div class="product-info">
+                        <h3>HTP-AT 22</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 3000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 22', 3000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/at24.jpg" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>HTP-AT 24</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 1000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 24', 3500.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/at28.webp" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>HTP-AT 28</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 3800.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 28', 3800.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/at30.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>HTP-AT 30</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 4500.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 30', 4500.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/balwanhtp.jpg" alt="2litre Pump">
+                    <div class="product-info">
+                        <h3>Balwan HTP-AT 30 with Engine</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 10000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Balwan HTP-AT 30 with Engine', 10000.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/htpgaruda.webp" alt="8litre Pump">
+                    <div class="product-info">
+                        <h3>HTP-AT 22 with Engine</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 9500.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 22 with Engine', 9500.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/AG215_HTP_SPRAYER_3.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Honda HTP-AT 30 with Engine </h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 20000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Honda HTP-AT 30 with Engine ', 20000.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/AG153_HTP_Sprayer.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>HTP-AT 22 With Engine</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 9500.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('HTP-AT 22 With Engine', 9500.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br><br>
+        <section id="products">
+            <h3 id="grass">Grass Cutter</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/grass_cutter.webp" alt="petrol">
+                    <div class="product-info">
+                        <h3>Honda GX-35</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 16000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Honda GX-35', 16000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/lawnc2.jpg" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>Lawn Mover</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 15000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Lawn Mover', 15000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/hondac1.png" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>Honda GX-25 Engine</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 12000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Honda GX-25 Engine', 12000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/c5grass.webp" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Mini Tractor</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 30000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Mini Tractor', 30000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/c6neptune.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Backpack Grass Cutter</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 10000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Backpack Grass Cutter', 10000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/c7cordless.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Manual Grass Cutter</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 5000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Manual Grass Cutter', 5000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/backc4.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>EB GX-35 Grass Cutter</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 8000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('EB GX-35 Grass Cutter', 8000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/balwanc3.webp" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Balwan Grass Cutter</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 10000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Balwan Grass Cutter', 10000.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <section id="products">
+            <h3 id="washer">Pressure Washer</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/pressure_washer.jpg" alt="petrol">
+                    <div class="product-info">
+                        <h3>High Pressure Washer</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 16000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('High Pressure Washer', 16000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/p2neptune.webp" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>Neptune Pressure Washer</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 7000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Neptune Pressure Washer', 7000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/p3bell.webp" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>IBell Pressure washer</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 12000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('IBell Pressure washer', 12000.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/p4starq.jpg" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>StarQ Pressure Washer</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 8000.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('StarQ Pressure Washer', 8000.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <br><br>
+        <section id="products">
+            <h3 id="spare">Spare parts</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/photo/lance.jpg" alt="petrol">
+                    <div class="product-info">
+                        <h3>Lance</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 80.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Lance', 80.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/trigger.webp" alt="Battery Pump">
+                    <div class="product-info">
+                        <h3>Trigger</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 80.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                          <button class="add-to-cart" onclick="addToCart('Trigger', 80.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/battery_spares.webp" alt="Double Battery Pump">
+                    <div class="product-info">
+                        <h3>Battery 12v 12ah</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 1200.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Battery 12v 12ah', 1200.00)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/photo/belt.webp" alt="Petrol Pump">
+                    <div class="product-info">
+                        <h3>Knapsack Belt</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 100.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Knapsack Belt', 100.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/button.jpg" alt="2litre Pump">
+                    <div class="product-info">
+                        <h3>ON/OFF Button</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 40.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('ON/OFF Button', 40.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/socket.jpg" alt="8litre Pump">
+                    <div class="product-info">
+                        <h3>Charging Socket</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 40.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Charging Socket', 40.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/d-set.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>D-SET</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 80.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('D-SET', 80.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/nozzle.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Nozzle Set</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 150.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Nozzle Set', 150.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/regulator.jpg" alt="Pump">
+                    <div class="product-info">
+                        <h3>Regulator</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 180.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Regulator', 180.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/charger.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Charger</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 300.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Charger', 300.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/gun.jpg" alt="Pump">
+                    <div class="product-info">
+                        <h3>2-Feet Gun</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 350.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('2-Feet Gun', 350.00)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/photo/motor.webp" alt="Pump">
+                    <div class="product-info">
+                        <h3>Motor</h3>
+                        <p>High-quality sprayer for efficient agricultural use.</p>
+                        <p><span style="font-weight:600;">RS 650.00</span></p>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="add-to-cart" onclick="addToCart('Motor', 650.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+        <div class="success" id="success-cart"> 
+            <div class="done">
+                <img src="/photo/shopping-cart.gif">
+                <p>Added To Cart></p>
+            </div>
+           </div> 
+        
+           <div id="cart-modal">
+            <div class="cart-modal-content">
+                <button class="cart-close" onclick="toggleCart()">&times;</button>
+                <h2>Your Cart</h2>
+                <ul id="cart-items"></ul>
+                <p class="cart-total">Total: RS <span id="cart-total">0.00</span></p>
+                <button onclick="checkout()" id="buy">Checkout</button>
+                
+                <div class="recent-orders">
+                    <h3>Recent Orders</h3>
+                    <div id="recent-orders-list"></div>
+                </div>
+            </div>
+        </div>
+    
+
+        <div class="bill-container" id="billContainer">
+            <button class="cart-close" id="closeBillContainer">&times;</button>
+            <h2>Billing Details</h2>
+            <h1>ORDER SUMMARY</h1>
+            <div id="orderIdDisplay"></div>
+            <div class="bill-items"></div>
+            <p style="color:#06bb2a;font-weight: bolder;">Total: RS <span class="bill-total">0.00</span></p>
+
+            <form class="billing-form" id="billingForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="pincode">Pin-Code</label>
+                <input type="number" id="pincode" name="pincode" required>
+                
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment_method">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                </select>
+                
+                <input type="submit" value="Confirm Order">
+            </form>
+        </div>
+        
+        <div class="success-overlay" id="success-overlay">
+            <div class="success-message">
+                <img src="/photo/verified.gif" alt="Checkmark" class="checkmark">
+                <h2>Your Order Has Been Placed!</h2>
+                <p id="successOrderId"></p>
+            </div>
+        </div>
+        
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>
+                At MB Agritech, we are dedicated to empowering farmers with innovative agricultural solutions. 
+                Specializing in high-performance sprayer pumps, we understand the critical role precision and efficiency play in modern farming. 
+                Our mission is to provide reliable, technology-driven tools that support sustainable agriculture, boost crop yields, and promote healthier crops.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MB AGRITECH</h3>
+                    <p>Empowering farmers with innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: mbagritech@gmail.com</p>
+                    <p>Phone: 9568745623</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter fa-2xl"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        let cart = [];
+        let recentOrders = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedOrders = localStorage.getItem('recentOrders');
+            if (storedOrders) {
+                recentOrders = JSON.parse(storedOrders);
+                displayRecentOrders();
+            }
+
+            // Load cart from localStorage
+            const storedCart = localStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+                updateCartCount();
+            }
+        });
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('display');
+            if (mobileMenu.classList.contains('display')) {
+                mobileMenu.style.display = 'block';
+                setTimeout(() => {
+                    mobileMenu.style.top = '60px';
+                }, 10);
+            } else {
+                mobileMenu.style.top = '-20%';
+                setTimeout(() => {
+                    mobileMenu.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        function addToCart(productName, productPrice) {
+            const button = event.target;
+            const quantityInput = button.previousElementSibling;
+            const quantity = parseInt(quantityInput.value);
+
+            if (quantity < 1) {
+                alert("Please enter a valid quantity.");
+                return;
+            }
+
+            const existingProduct = cart.find(item => item.name === productName);
+
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                const product = { name: productName, price: productPrice, quantity: quantity };
+                cart.push(product);
+            }
+
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            updateCartCount();
+            updateCartDisplay();
+            showSuccessCart();
+        }
+
+        function logout() {
+            console.log("LOGOUT");
+            window.location.href = '/html/index.html';
+        }
+
+        function updateCartCount() {
+            const cartCountElements = document.getElementsByClassName('cart-count');
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            for (let element of cartCountElements) {
+                element.innerText = count;
+            }
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.classList.toggle('open');
+            updateCartDisplay();
+            displayRecentOrders();
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((product, index) => {
+                const itemHTML = `
+                    <li>
+                        ${product.name} - RS${product.price.toFixed(2)} x ${product.quantity}
+                        <button onclick="removeFromCart(${index})" class="btn btn-secondary"><i class="fa-solid fa-trash"></i> Remove</button>
+                    </li>`;
+                cartItems.innerHTML += itemHTML;
+                total += product.price * product.quantity;
+            });
+
+            cartTotal.innerText = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            // Update localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+            updateCartCount();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const cm = document.getElementById('cart-modal');
+            cm.classList.remove('open');
+            
+            billcart();
+            toggleBillContainer();
+        }
+
+        function billcart() {
+            const orderId = Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('orderIdDisplay').innerHTML = `<p>Order ID: ${orderId}</p>`;
+            const billItems = document.querySelector('.bill-items');
+            const billTotal = document.querySelector('.bill-total');
+            billItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((product) => {
+                const itemHTML = `
+                    <li>
+                        ${product.name} - RS${product.price.toFixed(2)} X ${product.quantity}
+                    </li>`;
+                billItems.innerHTML += itemHTML;
+                total += product.price * product.quantity;
+            });
+            
+            billTotal.innerText = total.toFixed(2);
+
+            document.getElementById('billingForm').onsubmit = function(e) {
+                e.preventDefault();
+                document.getElementById('success-overlay').style.display = 'flex';
+                document.getElementById('successOrderId').textContent = `Order ID: ${orderId}`;
+                setTimeout(() => {
+                    document.getElementById('success-overlay').style.display = 'none';
+                    closeBillContainer();
+                }, 3000);
+
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            };
+        }
+
+        function toggleBillContainer() {
+            const billContainer = document.getElementById('billContainer');
+            billContainer.classList.toggle('open');
+        }
+
+        function closeBillContainer() {
+            const billContainer = document.getElementById('billContainer');
+            billContainer.classList.remove('open');
+        }
+
+        function showSuccessCart() {
+            const successCart = document.getElementById('success-cart');
+            successCart.style.display = 'block'; 
+            setTimeout(() => {
+                successCart.style.display = 'none';
+            }, 1200);
+        }
+
+        function displayRecentOrders() {
+            const recentOrdersList = document.getElementById('recent-orders-list');
+            recentOrdersList.innerHTML = '';
+
+            recentOrders.forEach(order => {
+                const orderHTML = `
+                    <div class="recent-order-item">
+                        <span>${order.id}</span>
+                        <span>RS ${order.total.toFixed(2)}</span>
+                        <span>${order.date}</span>
+                    </div>
+                `;
+                recentOrdersList.innerHTML += orderHTML;
+            });
+        }
+
+        document.getElementById('closeBillContainer').addEventListener('click', closeBillContainer);
+    </script>
+</body>
+</html>
